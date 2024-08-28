@@ -33,7 +33,7 @@ export default function Home() {
           
           <div className="flex items-center space-x-4">
             <div className="flex-1">
-              <img src="/netflix-app.png" alt="Netflix App" className="w-full h-auto object-cover rounded-lg" />
+              <img src="/project1.png" alt="Netflix App" className="w-full h-auto object-cover rounded-lg" />
             </div>
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100">
               <span className="text-lg font-semibold text-gray-600">→</span>
