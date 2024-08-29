@@ -4,6 +4,22 @@ import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const projects = [
+  {
+    id: 1,
+    title: 'Netflix App',
+    image: '/project1.png',
+    alt: 'Netflix App',
+  },
+  {
+    id: 2,
+    title: 'Spotify App',
+    image: '/spotify-app.png',
+    alt: 'Spotify App',
+  },
+  // Add more projects here as needed
+];
+
 export default function Home() {
   return (
     <div>
@@ -25,29 +41,26 @@ export default function Home() {
         </section>
 
         <section className="mt-16 space-y-12">
-          <div className="flex items-center space-x-4">
-            <div className="flex-1 border-t border-gray-300"></div>
-            <p className="uppercase text-sm text-gray-600">UX Case Study</p>
-            <div className="flex-1 border-t border-gray-300"></div>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <div className="flex-1">
-              <img src="/project1.png" alt="Netflix App" className="w-full h-auto object-cover rounded-lg" />
+          {projects.map((project, index) => (
+            <div key={project.id} className="space-y-4">
+            
+                <div className="flex items-center space-x-4">
+                  <div className="flex-1 border-t border-gray-300"></div>
+                </div>
+             
+              <div className="flex items-center space-x-4">
+                <div className="flex-1">
+                 {project.title}
+                </div>
+                <div className="w-12 h-12 flex items-center justify-center rounded-full ">
+                  <span className="text-lg font-semibold text-gray-600">→</span>
+                </div>
+              </div>
+              <div className="flex-1">
+                  <img src={project.image} alt={project.alt} className="w-full h-auto object-cover rounded-lg" />
+                </div>
             </div>
-            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100">
-              <span className="text-lg font-semibold text-gray-600">→</span>
-            </div>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <div className="flex-1">
-              <img src="/spotify-app.png" alt="Spotify App" className="w-full h-auto object-cover rounded-lg" />
-            </div>
-            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100">
-              <span className="text-lg font-semibold text-gray-600">→</span>
-            </div>
-          </div>
+          ))}
         </section>
       </main>
     </div>
