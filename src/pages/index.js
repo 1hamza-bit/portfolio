@@ -1,26 +1,51 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const projects = [
   {
     id: 1,
-    title: 'Netflix App',
-    image: '/project1.png',
-    alt: 'Netflix App',
+    title: 'Stream Apps',
+    image: '/streamapps.png',
+    alt: 'Stream Apps',
+    url: 'https://streamapps.vercel.app'
   },
   {
     id: 2,
-    title: 'Spotify App',
-    image: '/spotify-app.png',
-    alt: 'Spotify App',
+    title: 'Cyber to Cyber',
+    image: '/cyber.png',
+    alt: 'Netflix App',
+    url: 'https://cybertocyber.com'
+
+
+  },
+  {
+    id: 3,
+    title: 'Shahryar Trading',
+    image: '/project1.png',
+    alt: 'STC',
+    url: 'https://shahzadtradingcompany.com'
+
+
+  },
+  {
+    id: 4,
+    title: 'Meet Ahsan',
+    image: '/meet.png',
+    alt: 'meet',
+    url: 'https://'
+
+
   },
   // Add more projects here as needed
 ];
 
 export default function Home() {
+
   return (
     <div>
       <Header />
@@ -53,11 +78,18 @@ export default function Home() {
                  {project.title}
                 </div>
                 <div className="w-12 h-12 flex items-center justify-center rounded-full ">
-                  <span className="text-lg font-semibold text-gray-600">→</span>
+                <Link href={project.url} passHref legacyBehavior>
+                <a target="_blank" rel="noopener noreferrer">
+                <ArrowRight
+    size={32}
+    className="transform transition-transform duration-300 group- hover:translate-x-2"
+  />
+  </a>
+</Link>
                 </div>
               </div>
               <div className="flex-1">
-                  <img src={project.image} alt={project.alt} className="w-full h-auto object-cover rounded-lg" />
+                  <img src={project.image} alt={project.alt} className="w-full h-auto object-cover rounded-lg max-h-[70vh]" />
                 </div>
             </div>
           ))}
