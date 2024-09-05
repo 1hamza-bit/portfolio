@@ -60,37 +60,43 @@ export default function Home() {
           <p className="text-gray-600 mt-2">
             Frontend Developer at <strong>Ginkgo</strong>
           </p>
-          <button className="mt-6 px-6 py-2 bg-black text-white rounded-full">
-            My Resume
-          </button>
+          <a
+            href="https://drive.google.com/file/d/13unnkIG-aysF2t7a73ENfMD_Bas_0lqS/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="mt-6 px-6 py-2 bg-black text-white rounded-full">
+              My Resume
+            </button>
+          </a>
         </section>
 
         <section className="mt-16 space-y-12">
           {projects.map((project, index) => (
             <div key={project.id} className="space-y-4">
-            
-                <div className="flex items-center space-x-4">
-                  <div className="flex-1 border-t border-gray-300"></div>
-                </div>
-             
+
+              <div className="flex items-center space-x-4">
+                <div className="flex-1 border-t border-gray-300"></div>
+              </div>
+
               <div className="flex items-center space-x-4">
                 <div className="flex-1">
-                 {project.title}
+                  {project.title}
                 </div>
                 <div className="w-12 h-12 flex items-center justify-center rounded-full ">
-                <Link href={project.url} passHref legacyBehavior>
-                <a target="_blank" rel="noopener noreferrer">
-                <ArrowRight
-    size={32}
-    className="transform transition-transform duration-300 group- hover:translate-x-2"
-  />
-  </a>
-</Link>
+                  <Link href={project.url} passHref legacyBehavior>
+                    <a target="_blank" rel="noopener noreferrer">
+                      <ArrowRight
+                        size={32}
+                        className="transform transition-transform duration-300 group- hover:translate-x-2"
+                      />
+                    </a>
+                  </Link>
                 </div>
               </div>
               <div className="flex-1">
-                  <img src={project.image} alt={project.alt} className="w-full h-auto object-cover rounded-lg max-h-[70vh]" />
-                </div>
+                <img src={project.image} alt={project.alt} className="w-full h-auto object-cover rounded-lg max-h-[70vh]" />
+              </div>
             </div>
           ))}
         </section>
