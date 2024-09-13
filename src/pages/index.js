@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Header from "@/components/header";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import MyStory from "@/components/MyStory";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,10 +50,10 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <main className="px-16 py-16">
+      <main className="px-4 py-4  md:px-16 md:py-16">
         <section className="">
           <h1 className="text-4xl font-bold">
-            Hi, I'm <span className="text-blue-600">Hamza Tahir</span>.
+            Hi, I'm <span className="">Hamza Tahir</span>.
           </h1>
           <h2 className="text-2xl font-semibold mt-2">
             <span className="text-blue-600">Software Engineer</span> based in Lahore, Pakistan
@@ -70,17 +71,21 @@ export default function Home() {
             </button>
           </a>
         </section>
+        <MyStory />
 
-        <section className="mt-16 space-y-12">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-8">My Portfolio</h2>
+
+
+        <section className="mt-4 space-y-12">
           {projects.map((project, index) => (
             <div key={project.id} className="space-y-4">
 
               <div className="flex items-center space-x-4">
-                <div className="flex-1 border-t border-gray-300"></div>
+                <div className="flex-1 border-b border-gray-300"></div>
               </div>
 
               <div className="flex items-center space-x-4">
-                <div className="flex-1">
+                <div className="flex-1 text-lg font-semibold">
                   {project.title}
                 </div>
                 <div className="w-12 h-12 flex items-center justify-center rounded-full ">

@@ -26,3 +26,8 @@ body {
     text-wrap: balance;
   }
 }
+
+.shadoww{
+  box-shadow:  20px 20px 60px #ededed,
+             -20px -20px 60px #ffffff;
+}
