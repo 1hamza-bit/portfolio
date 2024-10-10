@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import MyStory from "@/components/MyStory";
+import Testimonials from "@/components/Testi";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -105,6 +106,7 @@ export default function Home() {
             </div>
           ))}
         </section>
+        <Testimonials />
       </main>
     </div>
   );
