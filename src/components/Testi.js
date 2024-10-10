@@ -13,21 +13,21 @@ const Testimonials = () => {
           {/* Testimonial 1 */}
           <div className="flex-1 bg-gray-50 p-6 rounded-lg shadow-lg">
             <div className="mb-4">
-              <span className="inline-block text-6xl text-black">&ldquo;</span>
+              <span className="inline-block "><span className="text-6xl text-red-600">&ldquo;</span> - Upwork Client</span>
             </div>
             <p className="text-gray-800 text-lg">
-              I had the pleasure of working with Chevis at Solara for over a year, much of that time as his direct manager. Chevis is an excellent Product Designer who consistently met and exceeded expectations. He worked on various parts of the product, notably taking the initiative on the homepage and API documentation redesign. He effectively handled complex challenges and consistently delivered high-quality results.
-            </p>
+            "Excellent work. Hamza understood the project from the very beginning and executed it flawlessly. He was very receptive to new ideas and changes. I would be very happy to work with him on future projects and updates."            </p>
           </div>
 
           {/* Testimonial 2 */}
           <div className="flex-1 bg-gray-50 p-6 rounded-lg shadow-lg mb-0 mt-0  md:-mb-16 md:mt-16">
-            <div className="mb-4">
-              <span className="inline-block text-6xl text-black">&rdquo;</span>
+          <div className="mb-4">
+              <span className="inline-block "><span className="text-6xl text-red-600">&ldquo;</span> - Ginkgo Review </span>
             </div>
             <p className="text-gray-800 text-lg">
-              I had the pleasure of working closely with Chevis at Vierra, where he not only served as the designer but also the Project Lead when I joined the team. Chevis impressed me right off the bat with his leadership skills, and dedication to elevating our product to its best potential.
-            </p>
+            "Hamza has proven to be a valuable asset to the company. His growth and dedication to improving his skills have been impressive, and we're excited to see him continue to excel."
+
+</p>
           </div>
           
         </div>
