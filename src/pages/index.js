@@ -14,14 +14,16 @@ const projects = [
     title: 'Stream Apps',
     image: '/streamapps.png',
     alt: 'Stream Apps',
-    url: 'https://streamapps.vercel.app'
+    url: 'https://streamapps.vercel.app',
+    Description : "This project was created for a client who wants to build his app showcase website using nextjs "
   },
   {
     id: 2,
     title: 'Cyber to Cyber',
     image: '/cyber.png',
     alt: 'Netflix App',
-    url: 'https://cybertocyber.com'
+    url: 'https://cybertocyber.com',
+    Description : "I have worked on this project with a team of developers and currently in progress i am frontend(Reactjs) team lead "
 
 
   },
@@ -30,7 +32,9 @@ const projects = [
     title: 'Shahryar Trading',
     image: '/project1.png',
     alt: 'STC',
-    url: 'https://shahzadtradingcompany.com'
+    url: 'https://shahzadtradingcompany.com',
+    Description : "This project was created for a client who wants to build a business website using nextjs "
+
 
 
   },
@@ -39,8 +43,8 @@ const projects = [
     title: 'Meet Ahsan',
     image: '/meet.png',
     alt: 'meet',
-    url: 'https://'
-
+    url: 'https://meetahsan.vercel.app',
+    Description : "This is an agency portfolio website built on nextjs and tailwind css "
 
   },
   // Add more projects here as needed
@@ -87,15 +91,15 @@ export default function Home() {
                   <h2 className="text-2xl font-bold text-gray-900">{project.title}</h2>
                   <p className="text-sm text-gray-500">
                     {/* Description: you can add project descriptions here */}
-                    Redesigning the API documentation for better developer experience.
+                    {project.Description}
                   </p>
                   <div className="flex items-center space-x-4">
-                    <div className="flex-1 text-sm text-gray-700">
+                    {/* <div className="flex-1 text-sm text-gray-700">
                       By {project.author || "Your Name"}
                     </div>
                     <div className="text-sm text-gray-700">
                       Timeline: {project.timeline || "Jan 2023 - Mar 2023"}
-                    </div>
+                    </div> */}
                   </div>
                   <Link href={project.url} passHref legacyBehavior>
                     <a
@@ -117,9 +121,13 @@ export default function Home() {
                     className="w-full h-auto object-cover rounded-lg shadow-lg"
                   />
                   {/* Add hover effect */}
-                  <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white">
-                    <p>Hover Text or Description</p>
+                <Link href={project.url} passHref legacyBehavior>
+
+                  <div className="absolute cursor-pointer inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white">
+                    {/* <p>Hover Text or Description</p> */}
                   </div>
+                  </Link>
+
                 </div>
 
               </div>
