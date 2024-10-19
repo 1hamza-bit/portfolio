@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import MyStory from "@/components/MyStory";
 import Testimonials from "@/components/Testi";
+import { useRef } from "react";
+import { animate } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +17,7 @@ const projects = [
     image: '/streamapps.png',
     alt: 'Stream Apps',
     url: 'https://streamapps.vercel.app',
-    Description : "This project was created for a client who wants to build his app showcase website using nextjs "
+    Description: "This project was created for a client who wants to build his app showcase website using nextjs "
   },
   {
     id: 2,
@@ -23,7 +25,7 @@ const projects = [
     image: '/cyber.png',
     alt: 'Netflix App',
     url: 'https://cybertocyber.com',
-    Description : "I have worked on this project with a team of developers and currently in progress i am frontend(Reactjs) team lead "
+    Description: "I have worked on this project with a team of developers and currently in progress i am frontend(Reactjs) team lead "
 
 
   },
@@ -33,7 +35,7 @@ const projects = [
     image: '/project1.png',
     alt: 'STC',
     url: 'https://shahzadtradingcompany.com',
-    Description : "This project was created for a client who wants to build a business website using nextjs "
+    Description: "This project was created for a client who wants to build a business website using nextjs "
 
 
 
@@ -44,18 +46,53 @@ const projects = [
     image: '/meet.png',
     alt: 'meet',
     url: 'https://meetahsan.vercel.app',
-    Description : "This is an agency portfolio website built on nextjs and tailwind css "
+    Description: "This is an agency portfolio website built on nextjs and tailwind css "
 
   },
   // Add more projects here as needed
 ];
 
 export default function Home() {
+  const projectsSectionRef = useRef(null);
+
+  const scrollToSection = () => {
+    const targetPosition = projectsSectionRef.current?.offsetTop;
+    const currentPosition = window.pageYOffset;
+
+    animate(currentPosition, targetPosition, {
+      duration: 2,  // Adjust this for slower scrolling (e.g., 2 seconds)
+      onUpdate: (latest) => window.scrollTo(0, latest),
+    });
+  };
+
+  const aboutSectionRef = useRef(null);
+
+  const scrollToAbout = () => {
+    const targetPosition = aboutSectionRef.current?.offsetTop;
+    const currentPosition = window.pageYOffset;
+
+    animate(currentPosition, targetPosition, {
+      duration: 2,  // Adjust this for slower scrolling (e.g., 2 seconds)
+      onUpdate: (latest) => window.scrollTo(0, latest),
+    });
+  };
+
+  const testiSectionRef = useRef(null);
+
+  const scrollToTesti = () => {
+    const targetPosition = testiSectionRef.current?.offsetTop;
+    const currentPosition = window.pageYOffset;
+
+    animate(currentPosition, targetPosition, {
+      duration: 2,  // Adjust this for slower scrolling (e.g., 2 seconds)
+      onUpdate: (latest) => window.scrollTo(0, latest),
+    });
+  };
 
   return (
-    <div>
-      <Header />
-      <main className="px-4 py-4  md:px-16 md:py-16">
+    <div >
+      <Header scrollToSection={scrollToSection} scrollToAbout={scrollToAbout} scrollToTesti={scrollToTesti} />
+      <main className="px-4 py-4 mt-12  md:px-16 md:py-16">
         <section className="">
           <h1 className="text-4xl font-bold">
             Hi, I'm <span className="">Hamza Tahir</span>.
@@ -76,12 +113,14 @@ export default function Home() {
             </button>
           </a>
         </section>
-        <MyStory />
+        <div ref={aboutSectionRef} >
+          <MyStory ref={aboutSectionRef} />
+        </div>
 
         <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-8">My Portfolio</h2>
 
 
-        <section className="mt-8 space-y-16 bg-white px-4 py-8">
+        <section id="projects" ref={projectsSectionRef} className="mt-8 space-y-16 bg-white px-4 py-8">
           {projects.map((project, index) => (
             <>
               <div key={project.id} className="grid  gap-8 bg-gray-100 shadoww p-3 rounded-md shadow-sm">
@@ -121,11 +160,11 @@ export default function Home() {
                     className="w-full h-auto object-cover rounded-lg shadow-lg"
                   />
                   {/* Add hover effect */}
-                <Link href={project.url} passHref legacyBehavior>
+                  <Link href={project.url} passHref legacyBehavior>
 
-                  <div className="absolute cursor-pointer inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white">
-                    {/* <p>Hover Text or Description</p> */}
-                  </div>
+                    <div className="absolute cursor-pointer inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white">
+                      {/* <p>Hover Text or Description</p> */}
+                    </div>
                   </Link>
 
                 </div>
@@ -135,12 +174,14 @@ export default function Home() {
             </>
           ))}
         </section>
+        <div ref={testiSectionRef}>
+          <Testimonials ref={testiSectionRef} />
 
-        <Testimonials />
+        </div>
 
       </main>
-      <footer className="bg-white text-black py-8 px-12">
-        <div className="px-8 mx-auto flex flex-col items-start">
+      <footer className="bg-white text-black py-8 px-4  md:px-12">
+        <div className="px-2 md:px-8 mx-auto flex flex-col items-start">
           <h2 className="text-xl font-light">Let's craft a better future, <span className="font-bold">together.</span></h2>
 
           <hr className="my-6 w-full border-gray-300 " />
@@ -148,19 +189,19 @@ export default function Home() {
           <div className="flex  items-center justify-between w-full">
             <div>
               <p className="italic font-light">Hamza<br />Tahir</p>
-              <p className="mt-4 text-sm text-gray-500">© 2024 All rights reserved.</p>
+              <p className="mt-4 text-sm text-gray-500 max-w-1/2">© 2024 All rights reserved.</p>
             </div>
 
             <div>
-              <div className="flex mt-4 space-x-4">
-                <a href="https://www.linkedin.com/in/hamza-tahir-960879255/" target="_blank" className="hover:underline">LinkedIn ↗</a>
-                <a href="https://drive.google.com/file/d/13unnkIG-aysF2t7a73ENfMD_Bas_0lqS/view" target="_blank" className="hover:underline">Resume ↗</a>
-                <a href="mailto:hamtah112@gmail.com" target="_blank" className="hover:underline">Email</a>
+              <div className="flex mt-4 space-x-2 md:space-x-4">
+                <a href="https://www.linkedin.com/in/hamza-tahir-960879255/" target="_blank" className="hover:underline text-sm">LinkedIn ↗</a>
+                <a href="https://drive.google.com/file/d/13unnkIG-aysF2t7a73ENfMD_Bas_0lqS/view" target="_blank" className="hover:underline text-sm">Resume ↗</a>
+                <a href="mailto:hamtah112@gmail.com" target="_blank" className="hover:underline text-sm">Email</a>
               </div>
 
-              <div className="mt-4 flex items-center space-x-2">
+              <div className="mt-5 flex items-center space-x-2">
                 <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                <span>Open to Next Role</span>
+                <span className="text-sm">Open to Next Role</span>
               </div>
             </div>
 

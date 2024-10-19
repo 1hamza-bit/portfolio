@@ -1,7 +1,7 @@
 // components/MyStory.js
-const MyStory = () => {
+const MyStory = (props) => {
     return (
-      <section className="bg-stone-100 py-6 mt-8 rounded-xl shadoww">
+      <section id="about" ref={props.ref}  className="bg-stone-100 py-6 mt-8 rounded-xl shadoww">
         <div className="container  flex flex-col md:flex-row items-center">
           {/* Text Section */}
           <div className="w-full md:w-3/3 px-6">

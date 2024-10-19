@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Testimonials = () => {
+const Testimonials = (props) => {
   return (
-    <section className="bg-white py-12">
+    <section id="testimonials" ref={props.testiSectionRef}  className="bg-white py-12">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-12 md:px-12">
         <h2 className="text-left text-3xl leading-9 font-extrabold text-gray-900 mb-12">
           Testimonials from Past Colleagues
