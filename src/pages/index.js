@@ -7,6 +7,7 @@ import MyStory from "@/components/MyStory";
 import Testimonials from "@/components/Testi";
 import { useRef } from "react";
 import { animate } from "framer-motion";
+import { useTheme } from "../../context/ThemeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,6 +55,8 @@ const projects = [
 
 export default function Home() {
   const projectsSectionRef = useRef(null);
+  const { theme, toggleTheme } = useTheme(); // Use the theme and toggle function
+
 
   const scrollToSection = () => {
     const targetPosition = projectsSectionRef.current?.offsetTop;
@@ -92,15 +95,15 @@ export default function Home() {
   return (
     <div >
       <Header scrollToSection={scrollToSection} scrollToAbout={scrollToAbout} scrollToTesti={scrollToTesti} />
-      <main className="px-4 py-4 mt-12  md:px-16 md:py-16">
-        <section className="">
+      <main className={`px-4 py-4 mt-12 md:px-16 md:py-16 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'} transition-all duration-300`}>
+        <section>
           <h1 className="text-4xl font-bold">
-            Hi, I'm <span className="">Hamza Tahir</span>.
+            Hi, I'm <span>Hamza Tahir</span>.
           </h1>
           <h2 className="text-2xl font-semibold mt-2">
             <span className="text-blue-600">Software Engineer</span> based in Lahore, Pakistan
           </h2>
-          <p className="text-gray-600 mt-2">
+          <p className={`mt-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
             Frontend Developer at <strong>Ginkgo</strong>
           </p>
           <a
@@ -113,33 +116,19 @@ export default function Home() {
             </button>
           </a>
         </section>
-        <div ref={aboutSectionRef} >
+        <div ref={aboutSectionRef}>
           <MyStory ref={aboutSectionRef} />
         </div>
 
-        <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-8">My Portfolio</h2>
+        <h2 className={`text-3xl font-bold mb-6 mt-8 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>My Portfolio</h2>
 
-
-        <section id="projects" ref={projectsSectionRef} className="mt-8 space-y-16 bg-white px-4 py-8">
+        <section id="projects" ref={projectsSectionRef} className={`mt-8 space-y-16 ${theme === 'dark' ? 'bg-transparent text-white' : 'bg-white text-black'} transition-all duration-300 px-4 py-8`}>
           {projects.map((project, index) => (
             <>
-              <div key={project.id} className="grid  gap-8 bg-gray-100 shadoww p-3 rounded-md shadow-sm">
-
-                {/* Text Section */}
+              <div key={project.id} className={`grid gap-8 p-3 rounded-md shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'} transition-all duration-300`}>
                 <div className="flex flex-col justify-center space-y-4">
-                  <h2 className="text-2xl font-bold text-gray-900">{project.title}</h2>
-                  <p className="text-sm text-gray-500">
-                    {/* Description: you can add project descriptions here */}
-                    {project.Description}
-                  </p>
-                  <div className="flex items-center space-x-4">
-                    {/* <div className="flex-1 text-sm text-gray-700">
-                      By {project.author || "Your Name"}
-                    </div>
-                    <div className="text-sm text-gray-700">
-                      Timeline: {project.timeline || "Jan 2023 - Mar 2023"}
-                    </div> */}
-                  </div>
+                  <h2 className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{project.title}</h2>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{project.Description}</p>
                   <Link href={project.url} passHref legacyBehavior>
                     <a
                       target="_blank"
@@ -150,46 +139,37 @@ export default function Home() {
                     </a>
                   </Link>
                 </div>
-
-
-                {/* Image Section */}
                 <div className="relative">
                   <img
                     src={project.image}
                     alt={project.alt}
                     className="w-full h-auto object-cover rounded-lg shadow-lg"
                   />
-                  {/* Add hover effect */}
                   <Link href={project.url} passHref legacyBehavior>
-
-                    <div className="absolute cursor-pointer inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white">
-                      {/* <p>Hover Text or Description</p> */}
-                    </div>
+                    <div className="absolute cursor-pointer inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white"></div>
                   </Link>
-
                 </div>
-
               </div>
-              <hr />
+              <hr className={theme === 'dark' ? 'border-gray-600' : ''} />
             </>
           ))}
         </section>
+
         <div ref={testiSectionRef}>
           <Testimonials ref={testiSectionRef} />
-
         </div>
-
       </main>
-      <footer className="bg-white text-black py-8 px-4  md:px-12">
+
+      <footer className={`py-8 px-4 md:px-12 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
         <div className="px-2 md:px-8 mx-auto flex flex-col items-start">
           <h2 className="text-xl font-light">Let's craft a better future, <span className="font-bold">together.</span></h2>
 
-          <hr className="my-6 w-full border-gray-300 " />
+          <hr className={`my-6 w-full ${theme === 'dark' ? 'border-gray-600' : 'border-gray-300'}`} />
 
-          <div className="flex  items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full">
             <div>
               <p className="italic font-light">Hamza<br />Tahir</p>
-              <p className="mt-4 text-sm text-gray-500 max-w-1/2">© 2024 All rights reserved.</p>
+              <p className={`mt-4 text-sm ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'} max-w-1/2`}>© 2024 All rights reserved.</p>
             </div>
 
             <div>
@@ -200,14 +180,14 @@ export default function Home() {
               </div>
 
               <div className="mt-5 flex items-center space-x-2">
-                <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                <div className={`h-3 w-3 rounded-full ${theme === 'dark' ? 'bg-green-500' : 'bg-green-500'}`}></div>
                 <span className="text-sm">Open to Next Role</span>
               </div>
             </div>
-
           </div>
         </div>
       </footer>
+
 
     </div>
   );
