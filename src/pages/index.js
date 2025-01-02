@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testi";
 import { useRef } from "react";
 import { animate } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
+import Stats from "@/components/Stats";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -120,7 +121,9 @@ export default function Home() {
           <MyStory ref={aboutSectionRef} />
         </div>
 
-        <h2 className={`text-3xl font-bold mb-6 mt-8 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>My Portfolio</h2>
+        <Stats />
+
+        <h2 className={`text-3xl font-bold mb-6 mt-4 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>My Portfolio</h2>
 
         <section id="projects" ref={projectsSectionRef} className={`mt-8 space-y-16 ${theme === 'dark' ? 'bg-transparent text-white' : 'bg-white text-black'} transition-all duration-300 px-4 py-8`}>
           {projects.map((project, index) => (
