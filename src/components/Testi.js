@@ -9,7 +9,7 @@ const Testimonials = (props) => {
         id="testimonials"
         ref={props.testiSectionRef}
         className={`${
-          theme === "dark" ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
+          theme === "dark" ? "bg-[#15181b] text-gray-100" : "bg-white text-gray-900"
         } py-12 transition-all duration-300`}
       >
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-12 md:px-12">
@@ -21,7 +21,7 @@ const Testimonials = (props) => {
             {/* Testimonial 1 */}
             <div
               className={`${
-                theme === "dark" ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-800"
+                theme === "dark" ? "bg-[#181b1f] text-gray-100" : "bg-gray-50 text-gray-800"
               } flex-1 p-6 rounded-lg shadow-lg transition-all duration-300`}
             >
               <div className="mb-4">
@@ -37,7 +37,7 @@ const Testimonials = (props) => {
             {/* Testimonial 2 */}
             <div
               className={`${
-                theme === "dark" ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-800"
+                theme === "dark" ? "bg-[#181b1f] text-gray-100" : "bg-gray-50 text-gray-800"
               } flex-1 p-6 rounded-lg shadow-lg mb-0 mt-0 md:-mb-16 md:mt-16 transition-all duration-300`}
             >
               <div className="mb-4">

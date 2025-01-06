@@ -5,10 +5,12 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import MyStory from "@/components/MyStory";
 import Testimonials from "@/components/Testi";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 import Stats from "@/components/Stats";
+import { InteractiveHoverButton } from "@/components/Button";
+import { motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,8 @@ const projects = [
     image: '/streamapps.png',
     alt: 'Stream Apps',
     url: 'https://streamapps.vercel.app',
-    Description: "This project was created for a client who wants to build his app showcase website using nextjs "
+    Description: "This project was created for a client who wants to build his app showcase website using Next.js.",
+    skills: ['Next.js', 'React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS']
   },
   {
     id: 2,
@@ -27,9 +30,8 @@ const projects = [
     image: '/cyber.png',
     alt: 'Netflix App',
     url: 'https://cybertocyber.com',
-    Description: "I have worked on this project with a team of developers and currently in progress i am frontend(Reactjs) team lead "
-
-
+    Description: "I have worked on this project with a team of developers and currently in progress. I am the Frontend (React.js) Team Lead.",
+    skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Bootstrap']
   },
   {
     id: 3,
@@ -37,10 +39,8 @@ const projects = [
     image: '/project1.png',
     alt: 'STC',
     url: 'https://shahzadtradingcompany.com',
-    Description: "This project was created for a client who wants to build a business website using nextjs "
-
-
-
+    Description: "This project was created for a client who wants to build a business website using Next.js.",
+    skills: ['Next.js', 'React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS']
   },
   {
     id: 4,
@@ -48,15 +48,29 @@ const projects = [
     image: '/meet.png',
     alt: 'meet',
     url: 'https://meetahsan.vercel.app',
-    Description: "This is an agency portfolio website built on nextjs and tailwind css "
-
-  },
+    Description: "This is an agency portfolio website built on Next.js and Tailwind CSS.",
+    skills: ['Next.js', 'React.js', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS']
+  }
   // Add more projects here as needed
 ];
+
 
 export default function Home() {
   const projectsSectionRef = useRef(null);
   const { theme, toggleTheme } = useTheme(); // Use the theme and toggle function
+  const fullText = "Hi, I'm Hamza Tahir.";
+  const [displayText, setDisplayText] = useState([]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (index < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText((prev) => [...prev, fullText[index]]);
+        setIndex(index + 1);
+      }, 50); // Adjust typing speed here
+      return () => clearTimeout(timeout);
+    }
+  }, [index, fullText]);
 
 
   const scrollToSection = () => {
@@ -96,25 +110,44 @@ export default function Home() {
   return (
     <div >
       <Header scrollToSection={scrollToSection} scrollToAbout={scrollToAbout} scrollToTesti={scrollToTesti} />
-      <main className={`px-4 py-4 mt-12 md:px-16 md:py-16 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'} transition-all duration-300`}>
+      <main className={`px-4 py-4 mt-12 md:px-16 md:py-16 ${theme === 'dark' ? 'bg-[#15181b] text-white' : 'bg-white text-black'} transition-all duration-300`}>
         <section>
-          <h1 className="text-4xl font-bold">
-            Hi, I'm <span>Hamza Tahir</span>.
-          </h1>
+          <motion.h1
+            className="text-[100px] font-bold flex flex-wrap"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {displayText.map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, delay: i * 0.01 }}
+              >
+                {char === " " ? "\u00A0" : char} {/* Ensures spaces are preserved */}
+              </motion.span>
+            ))}
+          </motion.h1>
           <h2 className="text-2xl font-semibold mt-2">
             <span className="text-blue-600">Software Engineer</span> based in Lahore, Pakistan
           </h2>
-          <p className={`mt-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-            Frontend Developer at <strong>Ginkgo</strong>
+          <p className={`mt-2 max-w-4xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+            Passionate software engineer with 3 years of experience, driven by a curiosity to uncover the 'why' behind every challenge and craft innovative solutions
+            that meet user needs. Dedicated to enhancing user experiences with modern practices,
+            I thrive in collaborative environments and am committed to continuous learning. Focused on delivering impactful,
+            high-performance results that drive innovation and long-term value.
           </p>
           <a
             href="https://drive.google.com/file/d/13unnkIG-aysF2t7a73ENfMD_Bas_0lqS/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
+
           >
-            <button className="mt-6 px-6 py-2 bg-black text-white rounded-full">
+            {/* <button className="mt-6 px-6 py-2 bg-black text-white rounded-full">
               My Resume
-            </button>
+            </button> */}
+            <InteractiveHoverButton />
           </a>
         </section>
         <div ref={aboutSectionRef}>
@@ -125,13 +158,61 @@ export default function Home() {
 
         <h2 className={`text-3xl font-bold mb-6 mt-4 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>My Portfolio</h2>
 
-        <section id="projects" ref={projectsSectionRef} className={`mt-8 space-y-16 ${theme === 'dark' ? 'bg-transparent text-white' : 'bg-white text-black'} transition-all duration-300 px-4 py-8`}>
+        <section
+          id="projects"
+          ref={projectsSectionRef}
+          className={`mt-8 space-y-16 ${theme === 'dark' ? 'bg-transparent text-white' : 'bg-white text-black'
+            } transition-all duration-300 px-4 py-8 border-t-2 border-b-2 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
+            }`}
+        >
           {projects.map((project, index) => (
-            <>
-              <div key={project.id} className={`grid gap-8 p-3 rounded-md shadow-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'} transition-all duration-300`}>
+            <div
+              key={project.id}
+              className={`grid grid-cols-5 gap-8 p-3 rounded-md transition-all duration-300 border-t border-b ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
+                }`}
+            >
+              {/* Skills Used Section */}
+              <div
+                className={`col-span-1 border-r-2 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
+                  } flex flex-col items-start space-y-2 p-3`}
+              >
+                <h3
+                  className={`text-lg font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    }`}
+                >
+                  Skills Used:
+                </h3>
+                <ul className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  {project.skills?.map((skill, idx) => (
+                    <li
+                      key={idx}
+                      className={`px-3 py-1 rounded-md ${theme === 'dark'
+                          ? 'bg-gray-800 text-gray-300'
+                          : 'bg-gray-200 text-gray-700'
+                        } text-sm shadow-sm`}
+                      title={`Skill: ${skill}`}
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Project Content */}
+              <div className="col-span-4 grid md:grid-cols-1 gap-8 items-center">
                 <div className="flex flex-col justify-center space-y-4">
-                  <h2 className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{project.title}</h2>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{project.Description}</p>
+                  <h2
+                    className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'
+                      }`}
+                  >
+                    {project.title}
+                  </h2>
+                  <p
+                    className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                      }`}
+                  >
+                    {project.Description}
+                  </p>
                   <Link href={project.url} passHref legacyBehavior>
                     <a
                       target="_blank"
@@ -153,17 +234,19 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              <hr className={theme === 'dark' ? 'border-gray-600' : ''} />
-            </>
+            </div>
           ))}
         </section>
+
+
+
 
         <div ref={testiSectionRef}>
           <Testimonials ref={testiSectionRef} />
         </div>
       </main>
 
-      <footer className={`py-8 px-4 md:px-12 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+      <footer className={`py-8 px-4 md:px-12 ${theme === 'dark' ? 'bg-[#15181b] text-white' : 'bg-white text-black'}`}>
         <div className="px-2 md:px-8 mx-auto flex flex-col items-start">
           <h2 className="text-xl font-light">Let's craft a better future, <span className="font-bold">together.</span></h2>
 
