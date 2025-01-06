@@ -168,38 +168,11 @@ export default function Home() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`grid grid-cols-5 gap-8 p-3 rounded-md transition-all duration-300 border-t border-b ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
+              className={`grid grid-cols-6 gap-8 p-3 rounded-md transition-all duration-300 border-t border-b ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
                 }`}
             >
-              {/* Skills Used Section */}
-              <div
-                className={`col-span-1 border-r-2 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
-                  } flex flex-col items-start space-y-2 p-3`}
-              >
-                <h3
-                  className={`text-lg font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                    }`}
-                >
-                  Skills Used:
-                </h3>
-                <ul className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                  {project.skills?.map((skill, idx) => (
-                    <li
-                      key={idx}
-                      className={`px-3 py-1 rounded-md ${theme === 'dark'
-                          ? 'bg-gray-800 text-gray-300'
-                          : 'bg-gray-200 text-gray-700'
-                        } text-sm shadow-sm`}
-                      title={`Skill: ${skill}`}
-                    >
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
               {/* Project Content */}
-              <div className="col-span-4 grid md:grid-cols-1 gap-8 items-center">
+              <div className="col-span-5 md:col-span-4 grid md:grid-cols-1 gap-8 items-center">
                 <div className="flex flex-col justify-center space-y-4">
                   <h2
                     className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -234,9 +207,37 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* Skills Used Section */}
+              <div
+                className={`col-span-5 md:col-span-2 sm:border-t-2 sm:border-l-0 md:border-l-2 md:border-t-0 md:mt-4 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
+                  } flex flex-col items-start space-y-2 p-3 `}
+              >
+                <h3
+                  className={`text-lg font-semibold ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    }`}
+                >
+                  Skills Used:
+                </h3>
+                <ul className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 w-full">
+                  {project.skills?.map((skill, idx) => (
+                    <li
+                      key={idx}
+                      className={`px-3 py-1 rounded-md ${theme === 'dark'
+                          ? 'bg-gray-800 text-gray-300'
+                          : 'bg-gray-200 text-gray-700'
+                        } text-sm shadow-sm`}
+                      title={`Skill: ${skill}`}
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </section>
+
 
 
 
