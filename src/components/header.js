@@ -15,7 +15,7 @@ export default function Header(props) {
 
   return (
     <header
-      className={`fixed w-full right-0 left-0 ${theme !== 'dark' ? 'bg-white text-gray-800' : 'bg-black text-gray-200'} transition-all duration-300 top-0 flex justify-between items-center py-4 px-8 z-50`}
+      className={`fixed w-full  right-0 left-0 ${theme !== 'dark' ? 'bg-white text-gray-800' : 'bg-black text-gray-200'} transition-all duration-300 top-0 flex justify-between items-center py-4 px-8 z-50`}
     >
       <div className="flex justify-between w-full items-center">
         <div className="text-xl font-bold">Frontend Developer</div>
@@ -52,7 +52,7 @@ export default function Header(props) {
                   animate={{ x: 0 }}
                   exit={{ x: '90%' }}
                   transition={{ duration: 0.2 }}
-                  className={`fixed top-12 right-0 w-3/5 h-full ${theme !== 'dark' ? 'bg-gray-100 text-gray-800' : 'bg-gray-800 text-gray-200'} flex flex-col px-8 pt-20 z-40`}
+                  className={`fixed top-12 right-0 w-3/5 h-full ${theme !== 'dark' ? 'bg-gray-100 text-gray-800' : 'bg-black text-gray-200'} flex flex-col px-8 pt-20 z-40`}
                 >
                   <nav className="space-y-6 text-lg flex flex-col">
                     <a
