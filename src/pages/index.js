@@ -108,12 +108,41 @@ export default function Home() {
   };
 
   return (
+
     <div >
       <Header scrollToSection={scrollToSection} scrollToAbout={scrollToAbout} scrollToTesti={scrollToTesti} />
       <main className={`px-4 py-4 mt-12 md:px-16 md:py-16 ${theme === 'dark' ? 'bg-[#15181b] text-white' : 'bg-white text-black'} transition-all duration-300`}>
+       
+
         <section>
+
+        {/* <motion.div
+            className="absolute top-0 left-0 w-2/3 h-[200px] bg-gradient-to-br from-blue-500 via-purple-500 to-transparent blur-3xl opacity-10 pointer-events-none"
+            initial={{ opacity: 0.1, x: -50, y: -50 }}
+            animate={{ opacity: 0.2, x: 0, y: 0 }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Bottom Right Cloud */}
+          {/* <motion.div
+            className="absolute bottom-0 right-0 w-3/4 h-[250px] bg-gradient-to-tr from-indigo-500 via-teal-400 to-transparent blur-3xl opacity-10 pointer-events-none"
+            initial={{ opacity: 0.1, x: 50, y: 50 }}
+            animate={{ opacity: 0.2, x: 0, y: 0 }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          // /> */}
+
           <motion.h1
-            className="text-[100px] font-bold flex flex-wrap"
+            className="text-[50px] md:text-[100px] font-bold flex flex-wrap"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -165,7 +194,9 @@ export default function Home() {
             } transition-all duration-300 px-4 py-8 border-t-2 border-b-2 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
             }`}
         >
+          
           {projects.map((project, index) => (
+             
             <div
               key={project.id}
               className={`grid grid-cols-6 gap-8 p-3 rounded-md transition-all duration-300 border-t border-b ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'
@@ -224,8 +255,8 @@ export default function Home() {
                     <li
                       key={idx}
                       className={`px-3 py-1 rounded-md ${theme === 'dark'
-                          ? 'bg-gray-800 text-gray-300'
-                          : 'bg-gray-200 text-gray-700'
+                        ? 'bg-gray-800 text-gray-300'
+                        : 'bg-gray-200 text-gray-700'
                         } text-sm shadow-sm`}
                       title={`Skill: ${skill}`}
                     >
@@ -277,5 +308,6 @@ export default function Home() {
 
 
     </div>
+
   );
 }

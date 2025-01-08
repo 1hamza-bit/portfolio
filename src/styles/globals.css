@@ -36,3 +36,21 @@ body {
   box-shadow:  20px 20px 60px #1b1b1b,
              -20px -20px 60px #0c0c0c;
 }
+
+@keyframes northernLights {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.northern-lights-bg {
+  background: linear-gradient(120deg, #3a1c71, #d76d77, #ffaf7b);
+  background-size: 300% 300%;
+  animation: northernLights 10s ease infinite;
+}
